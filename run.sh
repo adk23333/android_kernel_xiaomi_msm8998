@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo Start Compile.
+
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
 
 export ARCH=arm64 
