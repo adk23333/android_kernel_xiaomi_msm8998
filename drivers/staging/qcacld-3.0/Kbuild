@@ -2021,3 +2021,6 @@ endif
 obj-$(CONFIG_QCA_CLD_WLAN) += $(MODNAME).o
 $(MODNAME)-y := $(OBJS)
 clean-files := $(CLEAN_FILES)
+
+ccflags-y += -Wno-strict-prototypes
+ccflags-y += -Wno-unused-parameter

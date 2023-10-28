@@ -8,8 +8,16 @@ export ARCH=arm64
 
 export SUBARCH=arm64 
 
+if [ "$1" == "-c" ]; then
+	echo make clean.
+	make clean && make mrproper
+	rm -rf out
+	mkdir -p out
+	echo done.
+fi
+
 # args="-j$(nproc --all) \
-args="-j8 \
+args="-j6 \
 	ARCH=arm64 \
 	SUBARCH=arm64 \
 	O=out \
@@ -29,17 +37,9 @@ args="-j8 \
 	LLVM_AR=llvm-ar \
 	LLVM_DIS=llvm-dis "
 
-make clean && make mrproper
-
-rm -rf out 
-
-mkdir -p out
-
 make O=out /sagit_defconfig
 
 make ${args} 
-
-
 
 2>&1 | tee error.log
 
